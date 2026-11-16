@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Janani Porkodi · The Founder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Janani Porkodi: 14 years in tech, ex-PayPal, founder of Mystique Gifts (20,000+ corporate hampers for Infosys and nasscom), LinkedIn writer, AI builder and podcast host.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Jost:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital@0;1&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: one continuous scroll-scrubbed lift ride (a single graded video) with a floor counter, editorial type and real artefacts (hamper photos, post cards) sliding in per floor */
+:root{
+  --cream:#F4EEDC; --ink:#14201A; --sign:#1F6B45; --brass:#C9A24A; --paper:#EEF0E4; --muted:#56655A; --card:#FBF8EF;
+  --display:"Jost","Futura","Century Gothic",system-ui,sans-serif;
+  --deco:"Limelight","Didot",Georgia,serif;
+  --serif:"Libre Caslon Text",Georgia,serif;
+  --hand:"Caveat","Segoe Print",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:#0E1A13}
+body{margin:0;color:var(--cream);font-family:var(--display);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+#loader{position:fixed;inset:0;z-index:50;background:#13241B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .8s,visibility .8s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .lw{font-family:var(--deco);font-size:clamp(34px,7vw,72px)}
+#loader .lp{font-size:12px;letter-spacing:.32em;opacity:.75}
+#loader .bar{width:min(320px,70vw);height:2px;background:rgba(244,238,220,.2)}
+#loader .bar i{display:block;height:100%;width:0;background:var(--brass);transition:width .2s}
+
+#film{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0E1A13}
+#vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;pointer-events:none}
+.topfade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,16,10,.62),rgba(6,16,10,.25) 45%,transparent 65%),linear-gradient(rgba(6,16,10,.35),transparent 40%)}
+.grain{position:absolute;inset:-60%;pointer-events:none;opacity:.1;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-2%,6%)}80%{transform:translate(5%,2%)}100%{transform:translate(-3%,-2%)}}
+.shade{position:absolute;inset:0;background:#08130C;opacity:0;pointer-events:none}
+
+.t{position:absolute;opacity:0;visibility:hidden;will-change:transform,opacity;pointer-events:none;text-shadow:0 2px 22px rgba(6,18,10,.55)}
+.head{font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:-.005em}
+.left{left:max(5vw,20px);right:auto;max-width:min(620px,52vw)}
+.sub{font-family:var(--serif);font-size:clamp(15px,1.5vw,20px);line-height:1.5;margin-top:14px;max-width:46ch}
+.hand{font-family:var(--hand);font-size:clamp(22px,2.6vw,38px);line-height:1.15}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.hint{left:0;right:0;bottom:8vh;text-align:center;font-size:12px;letter-spacing:.34em}
+.hint b{display:block;margin:12px auto 0;width:1px;height:38px;background:var(--cream);animation:drip 1.6s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* timeline */
+.tl{list-style:none;margin:16px 0 0;padding:0 0 0 18px;border-left:2px solid rgba(244,238,220,.35);display:flex;flex-direction:column;gap:10px;max-width:44ch}
+.tl li{position:relative;font-size:clamp(13px,1.25vw,16px);line-height:1.35;opacity:.25;transition:opacity .4s}
+.tl li.on{opacity:1}
+.tl li::before{content:"";position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--brass)}
+.tl b{display:block;font-size:11px;letter-spacing:.2em;color:var(--brass)}
+
+/* stats */
+.stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:16px}
+.stat b{display:block;font-weight:800;font-size:clamp(26px,3.4vw,46px);line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+
+/* hamper wall: real photos */
+.wall{position:absolute;left:max(5vw,20px);bottom:8vh;width:min(520px,44vw);display:grid;grid-template-columns:repeat(4,1fr);gap:8px;pointer-events:none}
+.wall img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:4px;border:4px solid var(--card);box-shadow:0 14px 28px -14px rgba(0,0,0,.7);opacity:0;transform:translateY(30px) rotate(var(--r));will-change:transform,opacity}
+
+/* post cards */
+.posts{position:absolute;right:max(3vw,14px);top:12vh;width:min(380px,40vw);display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.post{background:var(--card);color:var(--ink);border-radius:10px;padding:14px 16px;box-shadow:0 18px 34px -16px rgba(0,0,0,.7);opacity:0;transform:translateX(40px);text-shadow:none}
+.post .who{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.post .who i{width:26px;height:26px;border-radius:50%;background:var(--sign);display:grid;place-items:center;color:#fff;font-style:normal;font-weight:700;font-size:11px}
+.post p{margin:8px 0 6px;font-size:14.5px;line-height:1.4}
+.post small{font-size:12px;color:var(--muted)}
+
+/* AI counter */
+.counter{display:flex;align-items:baseline;gap:14px;margin-top:16px}
+.counter b{font-weight:800;font-size:clamp(40px,5.6vw,80px);line-height:1;font-variant-numeric:tabular-nums}
+.counter span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+
+/* show cards */
+.shows{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;pointer-events:auto}
+.show{background:rgba(10,24,15,.55);border:1px solid rgba(244,238,220,.4);border-radius:10px;padding:12px 14px;text-decoration:none;min-width:200px;backdrop-filter:blur(6px)}
+.show b{display:block;font-size:16px}
+.show span{font-size:12px;opacity:.8}
+
+/* doors */
+.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px;max-width:560px;pointer-events:auto}
+.door{display:block;text-decoration:none;background:var(--cream);color:var(--ink);border-radius:999px 999px 12px 12px;padding:30px 16px 16px;text-align:center;text-shadow:none;transition:transform .2s}
+.door:hover,.door:focus-visible{transform:translateY(-4px)}
+.door:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.t.left{padding-top:30px}
+.backroad{display:inline-block;margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.door b{display:block;font-size:15px;text-transform:uppercase;letter-spacing:.04em}
+.door span{font-size:12px;color:var(--muted)}
+
+.backhome{position:fixed;z-index:21;left:max(18px,env(safe-area-inset-left,0px));top:calc(max(16px,env(safe-area-inset-top,0px)) + 38px);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#14201A;background:#F4EEDC;padding:8px 14px;border-radius:30px;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.backhome:focus-visible{outline:3px solid #C9A24A;outline-offset:3px}
+@media (max-width:700px){.backhome{top:auto;bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 26px);left:50%;transform:translateX(-50%)}}
+#wordmark{position:fixed;left:max(18px,env(safe-area-inset-left,0px));top:max(16px,env(safe-area-inset-top,0px));z-index:20;font-family:var(--deco);font-size:26px;line-height:1;text-decoration:none;text-shadow:0 2px 20px rgba(6,18,10,.4)}
+.floorind{position:fixed;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));z-index:21;display:flex;gap:4px;align-items:center;padding:6px 8px;border:1px solid rgba(244,238,220,.45);background:rgba(10,24,15,.3);backdrop-filter:blur(6px)}
+.floorind span{width:26px;height:26px;display:grid;place-items:center;font-size:12px;font-weight:700;border-radius:50%;opacity:.45;transition:all .3s}
+.floorind span.on{opacity:1;background:var(--brass);color:var(--ink)}
+.hud{position:fixed;left:max(18px,env(safe-area-inset-left,0px));right:max(18px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:21;display:flex;align-items:center;gap:16px;pointer-events:none;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.hud .bar{flex:1;height:2px;background:rgba(244,238,220,.28);position:relative}
+.hud .bar i{position:absolute;left:0;top:0;height:100%;background:var(--brass)}
+
+.epi{position:relative;z-index:2;background:var(--paper);color:var(--ink);padding-block:clamp(56px,9vw,100px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.epi .in{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.epi .k{font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#2E6B45}
+.epi h2{margin:0;font-weight:800;text-transform:uppercase;font-size:clamp(32px,5.4vw,64px);line-height:.92}
+.epi p{margin:0;font-size:18px;line-height:1.55;color:#3E4A41;max-width:62ch}
+.foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;border-top:1px solid #C9D2BF;padding-top:22px;font-size:14px;color:var(--muted)}
+.foot .wm{font-family:var(--deco);font-size:28px;color:var(--ink)}
+.foot a{color:var(--ink)}
+
+@media (max-aspect-ratio:1/1){
+  #vid{top:auto;bottom:0;height:58%;-webkit-mask-image:linear-gradient(transparent,#000 14%);mask-image:linear-gradient(transparent,#000 14%)}
+  .stage{background:linear-gradient(#1A2E22,#0E1A13 55%)}
+  .topfade{display:none}
+  .left{max-width:none;right:max(5vw,20px)}
+  .wall,.posts{top:auto;bottom:6vh;left:max(4vw,14px);right:max(4vw,14px);width:auto}
+  .wall{grid-template-columns:repeat(4,1fr)}
+  .posts .post:nth-child(n+2){display:none}
+  .hud .lbl{display:none}
+}
+@media (max-width:700px){.floorind{gap:1px;padding:4px 5px}.floorind span{width:19px;height:19px;font-size:10px}.backhome{position:fixed;z-index:21;left:max(18px,env(safe-area-inset-left,0px));top:calc(max(16px,env(safe-area-inset-top,0px)) + 38px);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:#14201A;background:#F4EEDC;padding:8px 14px;border-radius:30px;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.backhome:focus-visible{outline:3px solid #C9A24A;outline-offset:3px}
+@media (max-width:700px){.backhome{top:auto;bottom:calc(max(14px,env(safe-area-inset-bottom,0px)) + 26px);left:50%;transform:translateX(-50%)}}
+#wordmark{font-size:16px;top:max(20px,env(safe-area-inset-top,0px))}}
+@media (prefers-reduced-motion:reduce){.grain,.hint b{animation:none}}
+</style>
+
+<div id="loader" role="status" aria-live="polite"><div class="lw">Janani Porkodi</div><div class="bar"><i id="lbar"></i></div><div class="lp" id="lpct">CALLING THE LIFT · 0%</div></div>
+<a id="wordmark" href="../#hub">Janani Porkodi</a>
+<a class="backhome" id="backhome" href="../#hub">← Back to the road</a>
+<div class="floorind" aria-label="Floor"><span data-f="0">G</span><span data-f="1">1</span><span data-f="2">2</span><span data-f="3">3</span><span data-f="4">4</span><span data-f="5">5</span><span data-f="6">R</span></div>
+<div class="hud" aria-hidden="true"><span class="lbl" id="hlbl">Lobby</span><span class="bar"><i id="hbar"></i></span></div>
+
+<main id="film">
+  <div class="stage" id="stage">
+    <video id="vid" muted playsinline preload="auto" aria-label="A continuous ride in a glass lift through Janani's working life: a lobby with her black SUV, a tech office, her gifting studio, a stage where she speaks, an AI lab, a podcast studio and a rooftop over Chennai at dusk"></video>
+    <div class="topfade"></div>
+    <div class="shade" id="shade"></div>
+    <div class="grain" id="grain"></div>
+
+    <!-- G -->
+    <div class="t hint" data-a="-9" data-b=".4">Scroll to ride up<b></b></div>
+    <div class="t left" data-a=".4" data-b="3.4" style="top:14vh">
+      <div class="eyebrow">Ground floor</div>
+      <div class="head" style="font-size:clamp(40px,6.6vw,108px)">14 years in tech<br>before I built<br>my own.</div>
+    </div>
+    <!-- 1 -->
+    <div class="t left" data-a="4.6" data-b="7.3" style="top:12vh">
+      <div class="eyebrow">Floor 1 · Before</div>
+      <div class="head" style="font-size:clamp(30px,4.4vw,70px)">From writing code<br>to building products.</div>
+      <ul class="tl" id="tl">
+        <li><b>2009</b>BE Computer Science, Kings Engineering College · best outgoing student</li>
+        <li><b>2009–2014</b>Web developer → software engineer, The Binary Workshop, FreeElective</li>
+        <li><b>2014–2021</b>Aspire Systems · Module Lead → Project Lead</li>
+        <li><b>2021–2023</b>Product Manager, PayPal · regulations &amp; compliance for Canada and Japan</li>
+      </ul>
+    </div>
+    <!-- leap, in the lift -->
+    <div class="t left" data-a="7.7" data-b="9.4" style="top:22vh">
+      <div class="eyebrow">2023 · The leap</div>
+      <div class="hand" style="font-size:clamp(28px,3.6vw,54px)">"How long am I going to keep<br>thinking about the same thing?"</div>
+      <div class="sub">No business background. No backup. I bet on myself.</div>
+    </div>
+    <!-- 2 Mystique -->
+    <div class="t left" data-a="10" data-b="14.2" style="top:12vh">
+      <div class="eyebrow">Floor 2 · Now</div>
+      <div class="head" style="font-size:clamp(36px,5.6vw,92px)">Mystique<br>Gifts.</div>
+      <div class="sub">Corporate gifting and employee experiences, since Sep 2023. We don't sell gifts. We engineer moments.</div>
+      <div class="stats">
+        <div class="stat"><b data-count="20000" data-suffix="+">0</b><span>hampers delivered</span></div>
+        <div class="stat"><b data-count="4000">0</b><span>for one nasscom event</span></div>
+        <div class="stat"><b>₹3–4 Cr</b><span>so far</span></div>
+      </div>
+      <div class="sub" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase">Clients include Infosys · nasscom</div>
+    </div>
+    <div class="wall" id="wall" data-a="10.4" data-b="14.2">
+      <img src="hampers/h1.jpg" alt="Red silk festive hamper with brass flask and filter coffee" style="--r:-3deg">
+      <img src="hampers/h5.jpg" alt="Yellow printed box with a brass dabara set and candle" style="--r:2deg">
+      <img src="hampers/h7.jpg" alt="IVB onboarding kit with notebook, bottle and T-shirt" style="--r:2deg">
+      <img src="hampers/h4.jpg" alt="Rows of new-baby welcome kits" style="--r:-2deg">
+    </div>
+    <!-- 3 Words -->
+    <div class="t left" data-a="17.6" data-b="22.2" style="top:12vh">
+      <div class="eyebrow">Floor 3 · Words</div>
+      <div class="head" style="font-size:clamp(32px,4.8vw,80px)">32.9K people<br>read me on<br>LinkedIn.</div>
+      <div class="sub">80% of my leads come from LinkedIn. I write for founders, run LinkedIn sessions, and speak at events like Easwari Startup Peravai 2026. Featured in the Railway Magazine.</div>
+    </div>
+    <div class="posts" id="posts" data-a="18" data-b="22.2">
+      <div class="post"><div class="who"><i>JP</i>Janani Porkodi · Founder, Mystique Gifts</div><p>"80% of my leads come from LinkedIn." People think that means DMs. No. Content gives you a reputation, and the reputation gives you leads.</p><small>6,585 impressions</small></div>
+      <div class="post"><div class="who"><i>JP</i>Janani Porkodi · Founder, Mystique Gifts</div><p>I didn't have a business background. I didn't come from a business family. Yet, I quit my corporate job to start a business.</p><small>801 reactions · 48 comments</small></div>
+    </div>
+    <!-- 4 AI -->
+    <div class="t left" data-a="23.6" data-b="28" style="top:12vh">
+      <div class="eyebrow">Floor 4 · The AI lab</div>
+      <div class="head" style="font-size:clamp(34px,5.2vw,86px)">I built my own<br>gifting engine.</div>
+      <div class="sub">With Claude Code: every product from 500+ vendors, a client brief in plain English, 3–4 curated hampers inside budget, margins worked out, proposal ready.</div>
+      <div class="counter"><b id="aiclock">1 day</b><span>a day's curation now takes 15–20 min</span></div>
+      <div class="sub">Now I help founders find where AI fits in their business.</div>
+    </div>
+    <!-- 5 Voices -->
+    <div class="t left" data-a="30.4" data-b="34.2" style="top:12vh;pointer-events:auto">
+      <div class="eyebrow">Floor 5 · Voices &amp; community</div>
+      <div class="head" style="font-size:clamp(34px,5.2vw,86px)">I host<br>conversations.</div>
+      <div class="shows">
+        <a class="show" href="https://www.youtube.com/@jananiporkodi" target="_blank" rel="noopener"><b>The Direct Route</b><span>D2C founders, on Magic 20 Tamil</span></a>
+        <a class="show" href="https://www.youtube.com/@jananiporkodi" target="_blank" rel="noopener"><b>Travel Tales</b><span>Travellers, filmed in my car</span></a>
+      </div>
+      <div class="sub">Chapter Lead, Women Networking Club, Chennai.</div>
+    </div>
+    <!-- R -->
+    <div class="t left" data-a="37.4" data-b="99" style="top:12vh;pointer-events:auto" id="roof">
+      <div class="eyebrow">Rooftop</div>
+      <div class="head" style="font-size:clamp(38px,6vw,100px)">Let's build<br>something.</div>
+      <div class="doors">
+        <a class="door" href="mailto:jananiporkodi@gmail.com?subject=Gifting%20for%20our%20team"><b>Gifting</b><span>for your team &amp; clients</span></a>
+        <a class="door" href="mailto:jananiporkodi@gmail.com?subject=LinkedIn%20for%20founders"><b>LinkedIn</b><span>writing &amp; sessions</span></a>
+        <a class="door" href="mailto:jananiporkodi@gmail.com?subject=AI%20for%20my%20business"><b>AI</b><span>for your business</span></a>
+        <a class="door" href="mailto:jananiporkodi@gmail.com?subject=Talk%20or%20session"><b>Talks</b><span>events &amp; panels</span></a>
+      </div>
+      <a class="backroad" href="../#hub">← Back to the road · more exits</a>
+    </div>
+  </div>
+</main>
+
+<section class="epi" aria-labelledby="epi-h">
+  <div class="in">
+    <div class="k">The Founder</div>
+    <h2 id="epi-h">Before, I built products.<br>Now I build moments.</h2>
+    <p>jananiporkodi@gmail.com · Chennai</p>
+    <div class="foot"><span class="wm">Janani Porkodi</span><span><a href="../#hub">← The Road</a> · <a href="https://www.linkedin.com/in/jananiporkodi/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/travelwithporkodi/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@jananiporkodi" target="_blank" rel="noopener">YouTube</a></span></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var SRC="lift.mp4", HOLD_IN=.04, HOLD_OUT=.12, VH=1000;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var film=document.getElementById("film"),stage=document.getElementById("stage"),vid=document.getElementById("vid"),shade=document.getElementById("shade");
+  var texts=[].slice.call(document.querySelectorAll(".t"));
+  var walls=[].slice.call(document.querySelectorAll("#wall img")),wall=document.getElementById("wall");
+  var posts=[].slice.call(document.querySelectorAll("#posts .post")),postsBox=document.getElementById("posts");
+  var tl=[].slice.call(document.querySelectorAll("#tl li")),counts=[].slice.call(document.querySelectorAll("[data-count]"));
+  var floors=[].slice.call(document.querySelectorAll(".floorind span")),hlbl=document.getElementById("hlbl"),hbar=document.getElementById("hbar"),aiclock=document.getElementById("aiclock");
+  var D=39.3,W=0,H=0,lastT=-1,lastF=-1;
+  var FLOORS=[[0,"Lobby"],[4,"Floor 1 · Before"],[9,"Floor 2 · Mystique"],[16.6,"Floor 3 · Words"],[22.8,"Floor 4 · AI lab"],[29.6,"Floor 5 · Voices"],[36.6,"Rooftop"]];
+  film.style.height=VH+"vh";
+  var clamp=function(v,a,b){return v<a?a:v>b?b:v},ease=function(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2};
+
+  function setPct(p){document.getElementById("lbar").style.width=p+"%";document.getElementById("lpct").textContent="CALLING THE LIFT · "+p+"%";}
+  function done(){document.getElementById("loader").classList.add("done");}
+  fetch(SRC).then(function(r){var total=+r.headers.get("content-length")||0;if(!r.body||!total)return r.blob();
+    var reader=r.body.getReader(),got=0,chunks=[];function pump(){return reader.read().then(function(x){if(x.done)return new Blob(chunks,{type:"video/mp4"});chunks.push(x.value);got+=x.value.length;setPct(Math.round(got/total*100));return pump();});}return pump();
+  }).then(function(b){vid.src=URL.createObjectURL(b);}).catch(function(){vid.src=SRC;});
+  vid.addEventListener("loadedmetadata",function(){D=vid.duration||D;setPct(100);setTimeout(done,250);});
+  setTimeout(done,12000);
+
+  function layout(){W=innerWidth;H=stage.clientHeight||innerHeight;}
+  var target=0,cur=0;
+  function readScroll(){var span=film.offsetHeight-H;target=clamp((scrollY-film.offsetTop)/span,0,1);}
+  function vis(T,a,b){var i=clamp((T-(a-.6))/.6,0,1),o=clamp((T-b)/.6,0,1);return {i:ease(i),o:ease(o),v:ease(i)*(1-ease(o))};}
+
+  function render(p){
+    var v=clamp((p-HOLD_IN)/(1-HOLD_IN-HOLD_OUT),0,1),T=v*D;
+    if(vid.readyState>=1&&Math.abs(T-lastT)>1/60){try{vid.currentTime=Math.min(T,D-.05);}catch(e){}lastT=T;}
+    texts.forEach(function(el){
+      var a=+el.dataset.a,b=+el.dataset.b,s=vis(T,a,b);
+      if(p<HOLD_IN&&a<0)s.v=1-clamp(p/(HOLD_IN*.8),0,1);
+      el.style.opacity=s.v.toFixed(3);el.style.visibility=s.v>.001?"visible":"hidden";
+      el.style.transform="translateY("+((1-s.i)*36-s.o*36).toFixed(1)+"px)";
+    });
+    /* hamper wall: photos drop in one by one */
+    var wa=+wall.dataset.a,wb=+wall.dataset.b;
+    walls.forEach(function(im,k){var s=vis(T,wa+k*.45,wb);im.style.opacity=s.v.toFixed(3);im.style.transform="translateY("+((1-s.i)*30).toFixed(1)+"px) rotate(var(--r))";});
+    var pa=+postsBox.dataset.a,pb=+postsBox.dataset.b;
+    posts.forEach(function(el,k){var s=vis(T,pa+k*.9,pb);el.style.opacity=s.v.toFixed(3);el.style.transform="translateX("+((1-s.i)*40).toFixed(1)+"px)";});
+    tl.forEach(function(li,k){li.classList.toggle("on",T>5+k*.5);});
+    counts.forEach(function(c){var n=+c.dataset.count,k=ease(clamp((T-10.4)/2,0,1));c.textContent=Math.round(n*k).toLocaleString("en-IN")+(k>=1?(c.dataset.suffix||""):"");});
+    var ak=clamp((T-24)/2.4,0,1);aiclock.textContent=ak<.05?"1 day":ak<.98?Math.round(480-(480-18)*ease(ak))+" min":"15–20 min";
+    shade.style.opacity=(clamp((T-37.6)/1.2,0,1)*.3).toFixed(3);
+    var f=0;for(var i=FLOORS.length-1;i>=0;i--)if(T>=FLOORS[i][0]){f=i;break;}
+    if(f!==lastF){lastF=f;floors.forEach(function(s,j){s.classList.toggle("on",j===f);});hlbl.textContent=FLOORS[f][1];}
+    hbar.style.width=(p*100).toFixed(2)+"%";
+  }
+
+  (function(){var c=document.createElement("canvas");c.width=c.height=180;var x=c.getContext("2d"),d=x.createImageData(180,180);
+    for(var i=0;i<d.data.length;i+=4){var q=Math.random()*255|0;d.data[i]=d.data[i+1]=d.data[i+2]=q;d.data[i+3]=255;}
+    x.putImageData(d,0,0);document.getElementById("grain").style.backgroundImage="url("+c.toDataURL()+")";})();
+
+  function loop(){readScroll();cur+=(target-cur)*(reduce?1:.09);if(Math.abs(target-cur)<.00015)cur=target;render(cur);requestAnimationFrame(loop);}
+  addEventListener("resize",layout);
+  layout();readScroll();cur=target;loop();
+  if("scrollRestoration" in history)history.scrollRestoration="manual";
+  window.scrollTo(0,0);addEventListener("pageshow",function(){window.scrollTo(0,0);readScroll();cur=target;});
+  window.__frame=function(p){readScroll();cur=p;lastT=-1;render(p);return p;};
+})();
+</script>
+
+</html>

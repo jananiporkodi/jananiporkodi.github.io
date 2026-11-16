@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Janani Porkodi · Six Yards</title>
+<meta name="description" content="Six Yards: Janani Porkodi in sarees, by the sea, at the wheel and around the world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Jost:wght@500;600;700;800&family=Libre+Caslon+Text:ital@0;1&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: the page is one saree unrolling sideways. Scroll pulls six yards of coral silk with a gold zari border across the screen; real photos sit in the body of the fabric; the pallu closes it */
+:root{
+  --silk:#E2553E; --silk2:#C9442F; --zari:#C9A24A; --zari2:#E9C979; --cream:#FBF3E6; --ink:#2A1410; --plum:#5A1B14;
+  --display:"Jost","Futura",system-ui,sans-serif; --deco:"Limelight",Georgia,serif; --serif:"Libre Caslon Text",Georgia,serif; --hand:"Caveat",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--display);-webkit-font-smoothing:antialiased}
+body{overflow-x:clip}
+a{color:inherit}
+#wordmark{position:fixed;z-index:20;left:max(18px,env(safe-area-inset-left,0px));top:max(16px,env(safe-area-inset-top,0px));font-family:var(--deco);font-size:24px;text-decoration:none;color:var(--plum)}
+.backhome{position:fixed;z-index:21;left:max(18px,env(safe-area-inset-left,0px));top:calc(max(16px,env(safe-area-inset-top,0px)) + 36px);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--cream);background:var(--plum);padding:8px 14px;border-radius:30px}
+.backhome:focus-visible{outline:3px solid var(--zari);outline-offset:3px}
+.meter{position:fixed;z-index:21;right:max(16px,env(safe-area-inset-right,0px));top:max(16px,env(safe-area-inset-top,0px));font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--plum);display:flex;align-items:center;gap:10px}
+.meter .bar{width:120px;height:4px;background:rgba(90,27,20,.15);border-radius:2px;overflow:hidden}
+.meter .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--silk),var(--zari))}
+
+#film{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+
+/* the fabric */
+.fabric{position:relative;height:100%;display:flex;align-items:center;gap:6vw;padding:0 8vw 0 0;
+  background:
+    linear-gradient(var(--zari2),var(--zari) 30%,#A9832F 70%,var(--zari2)) top/100% 7vh no-repeat,
+    linear-gradient(var(--zari2),var(--zari) 30%,#A9832F 70%,var(--zari2)) bottom/100% 7vh no-repeat,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><g fill='none' stroke='%23F07A62' stroke-width='1.4' opacity='.55'><path d='M20 62c6-10 10-18 10-28M30 34c-6-2-9 2-9 6M30 34c6-2 9 2 9 6M30 34c0-6 0-9 0-9'/><path d='M66 22c4-7 6-12 6-19M72 3c-4-1-6 1-6 4M72 3c4-1 6 1 6 4'/></g></svg>") 0 0/90px 90px,
+    linear-gradient(180deg,var(--silk),var(--silk2));
+}
+.fabric::before,.fabric::after{content:"";position:absolute;left:0;right:0;height:3px;background:#F2C64E;opacity:.9}
+.fabric::before{top:calc(7vh + 6px)}.fabric::after{bottom:calc(7vh + 6px)}
+
+/* opening pleats */
+.open{position:relative;width:100vw;height:100%;flex:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pleats{position:absolute;inset:0;display:flex;justify-content:center;pointer-events:none}
+.pleat{flex:none;width:7vw;height:100%;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(255,255,255,.08) 40%,rgba(0,0,0,.22));will-change:transform}
+.open .title{position:relative;text-align:center;color:var(--cream);text-shadow:0 4px 30px rgba(60,10,5,.45)}
+.open .title .k{font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--zari2)}
+.open .title h1{margin:.1em 0 0;font-weight:800;text-transform:uppercase;font-size:clamp(70px,15vw,240px);line-height:.85}
+.open .title p{margin:18px auto 0;font-family:var(--hand);font-size:clamp(24px,3vw,44px);max-width:22ch;line-height:1.15}
+.hint{position:absolute;bottom:12vh;left:0;right:0;text-align:center;color:var(--cream);font-size:12px;letter-spacing:.32em;text-transform:uppercase}
+.hint b{display:inline-block;margin-left:10px;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(10px)}}
+
+/* chapters */
+.chap{flex:none;display:flex;align-items:center;gap:3.2vw;color:var(--cream)}
+.label{flex:none;width:min(360px,70vw);display:flex;flex-direction:column;gap:12px}
+.label .k{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--zari2)}
+.label h2{margin:0;font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.4vw,84px);line-height:.88}
+.label p{margin:0;font-family:var(--serif);font-size:clamp(16px,1.5vw,20px);line-height:1.5}
+.ph{flex:none;margin:0;background:var(--cream);padding:10px 10px 38px;box-shadow:0 30px 60px -24px rgba(50,8,4,.6);position:relative;will-change:transform}
+.ph img{display:block;height:var(--h,60vh);width:auto;max-width:none;object-fit:cover}
+.ph figcaption{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--hand);font-size:22px;color:var(--plum)}
+.ph.r1{transform:rotate(-2deg)}.ph.r2{transform:rotate(1.6deg) translateY(-3vh)}.ph.r3{transform:rotate(-1deg) translateY(3vh)}
+.quote{flex:none;width:min(520px,80vw);font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,44px);line-height:1.2;color:var(--cream)}
+.quote small{display:block;margin-top:12px;font-family:var(--display);font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--zari2)}
+
+/* pallu */
+.pallu{flex:none;width:100vw;height:100%;position:relative;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(90deg,var(--zari) 0 3vw,var(--silk2) 3vw 3.6vw,var(--zari2) 3.6vw 4.4vw,var(--silk) 4.4vw 9vw)}
+.pallu .end{background:var(--cream);color:var(--ink);padding:clamp(24px,4vw,48px);max-width:min(560px,86vw);text-align:center;box-shadow:0 30px 60px -24px rgba(50,8,4,.6);display:flex;flex-direction:column;gap:14px;align-items:center}
+.pallu .end h2{margin:0;font-weight:800;text-transform:uppercase;font-size:clamp(36px,5vw,72px);line-height:.9}
+.pallu .end p{margin:0;font-family:var(--serif);font-size:17px;line-height:1.5;color:#5A3A33}
+.pallu .end .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pallu .end a.b{display:inline-block;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:12px 18px;border-radius:30px;background:var(--plum);color:var(--cream)}
+.pallu .end a.b.alt{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
+.pallu .end a.b:focus-visible{outline:3px solid var(--zari);outline-offset:3px}
+
+@media (max-aspect-ratio:1/1){
+  .ph img{height:var(--hm,46vh)}
+  .label{width:76vw}
+  .chap{gap:8vw}
+  .fabric{gap:12vw}
+  .pleat{width:12vw}
+  .meter .bar{width:70px}
+}
+@media (prefers-reduced-motion:reduce){.hint b{animation:none}}
+</style>
+</head>
+<body>
+<a id="wordmark" href="../#hub">Janani Porkodi</a>
+<a class="backhome" href="../#hub">← Back to the road</a>
+<div class="meter" aria-hidden="true"><span id="yd">0.0 of 6 yards</span><span class="bar"><i id="ybar"></i></span></div>
+
+<main id="film">
+  <div class="stage" id="stage">
+    <div class="track" id="track">
+      <div class="fabric" id="fabric">
+
+        <section class="open" aria-label="Six Yards">
+          <div class="pleats" id="pleats"></div>
+          <div class="title" id="title">
+            <div class="k">Universe · Six Yards</div>
+            <h1>Six<br>Yards.</h1>
+            <p>"I love the personality a saree brings out when I wear it."</p>
+          </div>
+          <div class="hint">Scroll to unfold <b>→</b></div>
+        </section>
+
+        <section class="chap" aria-label="By the sea">
+          <div class="label"><div class="k">Yard 1 · By the sea</div><h2>Coral silk,<br>sea wind.</h2><p>A silk saree, a book and the rocks at the edge of the sea in Chennai. Some of my favourite photos of me.</p></div>
+          <figure class="ph r1" style="--h:66vh;--hm:48vh"><img src="img/shoot-012.jpg" alt="Janani in a coral silk saree with a gold border, hair flying in the wind by the sea"><figcaption>the wind did this</figcaption></figure>
+          <figure class="ph r2" style="--h:52vh;--hm:40vh"><img src="img/shoot-006.jpg" alt="Janani reading a book on the rocks in her coral saree"><figcaption>a book, always</figcaption></figure>
+          <figure class="ph r3" style="--h:58vh;--hm:42vh"><img src="img/shoot-027.jpg" alt="Janani seated on the rocks, the coral pallu spread around her"><figcaption>six yards, spread out</figcaption></figure>
+        </section>
+
+        <section class="chap" aria-label="At the wheel">
+          <div class="quote">Yes, I drive in a saree too.<small>Yard 2 · At the wheel</small></div>
+          <figure class="ph r2" style="--h:56vh;--hm:42vh"><img src="img/shoot-038.jpg" alt="Janani in her coral saree leaning on her car on an empty highway"><figcaption>my car, my saree</figcaption></figure>
+          <figure class="ph r1" style="--h:48vh;--hm:36vh"><img src="img/shoot-036.jpg" alt="Janani seated on the highway ledge beside her car"><figcaption>pit stop</figcaption></figure>
+        </section>
+
+        <section class="chap" aria-label="Anywhere">
+          <div class="label"><div class="k">Yard 3 · Anywhere</div><h2>Berlin.<br>Singapore.</h2><p>Some people pack jeans for a trip. I pack a saree or two.</p></div>
+          <figure class="ph r3" style="--h:50vh;--hm:38vh"><img src="img/berlin.jpg" alt="Janani in a red saree in front of a palace in Berlin"><figcaption>Berlin, in a saree</figcaption></figure>
+          <figure class="ph r1" style="--h:58vh;--hm:44vh"><img src="img/singapore.jpg" alt="Janani in a saree beside a giant Christmas tree in Singapore"><figcaption>Singapore, December</figcaption></figure>
+        </section>
+
+        <section class="chap" aria-label="Every day">
+          <div class="label"><div class="k">Yard 4 · Every day</div><h2>Meetings,<br>stages, sessions.</h2><p>A handloom cotton for a working day, a sheer print for a stage. The saree is how I show up.</p></div>
+          <figure class="ph r2" style="--h:56vh;--hm:42vh"><img src="img/grey.jpg" alt="Janani in a grey handloom saree with a cream blouse"><figcaption>handloom grey</figcaption></figure>
+          <figure class="ph r1" style="--h:62vh;--hm:46vh"><img src="img/black.jpg" alt="Janani in a sheer black leaf-print saree"><figcaption>black, my favourite</figcaption></figure>
+        </section>
+
+        <section class="chap" aria-label="The last yard">
+          <figure class="ph r3" style="--h:60vh;--hm:44vh"><img src="img/shoot-000.jpg" alt="Janani on the beach holding the gold border of her coral saree"><figcaption>the last yard</figcaption></figure>
+          <div class="quote">"Six yards. Many lives."<small>Yard 5 · The pallu</small></div>
+        </section>
+
+      </div>
+      <section class="pallu" aria-label="The end">
+        <div class="end">
+          <h2>That's<br>six yards.</h2>
+          <p>Every saree here is a real photo. Send me yours, or tell me which one you'd like to see next.</p>
+          <div class="btns">
+            <a class="b" href="../#hub">← Back to the road</a>
+            <a class="b alt" href="https://www.instagram.com/travelwithporkodi/" target="_blank" rel="noopener">Instagram</a>
+            <a class="b alt" href="mailto:jananiporkodi@gmail.com">Say hi</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var film=document.getElementById("film"),stage=document.getElementById("stage"),track=document.getElementById("track");
+  var pleatsBox=document.getElementById("pleats"),title=document.getElementById("title"),yd=document.getElementById("yd"),ybar=document.getElementById("ybar");
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var N=15,pleats=[];
+  for(var i=0;i<N;i++){var p=document.createElement("div");p.className="pleat";pleatsBox.appendChild(p);pleats.push(p);}
+  var phs=[].slice.call(document.querySelectorAll(".ph"));
+  var W=0,H=0,dist=0,OPEN=.9;
+  var clamp=function(v,a,b){return v<a?a:v>b?b:v},ease=function(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2};
+  function layout(){
+    W=innerWidth;H=stage.clientHeight||innerHeight;
+    dist=track.scrollWidth-W;
+    film.style.height=(H*OPEN+dist+H)+"px";
+  }
+  var target=0,cur=0;
+  function readScroll(){target=clamp(scrollY-film.offsetTop,0,film.offsetHeight-H);}
+  function render(y){
+    /* first part of the scroll: pleats fan open */
+    var o=clamp(y/(H*OPEN),0,1),e=ease(o);
+    pleats.forEach(function(p,i){var c=i-(N-1)/2;p.style.transform="translateX("+(c*e*W*.11).toFixed(1)+"px) scaleX("+(1+e*1.6).toFixed(3)+")";p.style.opacity=(1-e*.85).toFixed(3);});
+    title.style.transform="translateY("+(-e*30).toFixed(1)+"px) scale("+(1-e*.08).toFixed(3)+")";
+    /* then the fabric slides */
+    var x=clamp(y-H*OPEN,0,dist);
+    track.style.transform="translate3d("+(-x).toFixed(1)+"px,0,0)";
+    if(!reduce)phs.forEach(function(f,i){var r=f.getBoundingClientRect(),c=(r.left+r.width/2-W/2)/W;f.style.translate="0 "+(c*-24).toFixed(1)+"px";});
+    var pr=dist?x/dist:0;
+    yd.textContent=(pr*6).toFixed(1)+" of 6 yards";
+    ybar.style.width=(pr*100).toFixed(1)+"%";
+  }
+  function loop(){readScroll();cur+=(target-cur)*(reduce?1:.1);if(Math.abs(target-cur)<.3)cur=target;render(cur);requestAnimationFrame(loop);}
+  if("scrollRestoration" in history)history.scrollRestoration="manual";
+  window.scrollTo(0,0);
+  addEventListener("resize",function(){layout();});
+  [].forEach.call(document.images,function(im){if(!im.complete)im.addEventListener("load",layout);});
+  layout();readScroll();cur=target;loop();
+  window.__go=function(p){layout();var y=p*(film.offsetHeight-H);scrollTo(0,film.offsetTop+y);cur=target=y;render(y);return y;};
+})();
+</script>
+</body></html>

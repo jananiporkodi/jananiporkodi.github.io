@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Janani Porkodi · Window Seat</title>
+<meta name="description" content="Window Seat: the places Janani Porkodi has travelled, from Singapore to the Alps, with her own photos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Jost:wght@500;600;700;800&family=Libre+Caslon+Text:ital@0;1&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: one sticky stage; each stop is a full-screen window view that slowly pushes in and dissolves into the next, with headline type and real polaroids dropping in per stop */
+:root{--cream:#F4EEDC;--ink:#14201A;--brass:#C9A24A;--sign:#1F6B45;--paper:#EEF0E4;
+  --display:"Jost","Futura",system-ui,sans-serif;--deco:"Limelight",Georgia,serif;--serif:"Libre Caslon Text",Georgia,serif;--hand:"Caveat",cursive;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:#0E1A13;color:var(--cream);font-family:var(--display);-webkit-font-smoothing:antialiased}
+body{overflow-x:clip}
+a{color:inherit}
+#wordmark{position:fixed;z-index:20;left:max(18px,env(safe-area-inset-left,0px));top:max(16px,env(safe-area-inset-top,0px));font-family:var(--deco);font-size:24px;text-decoration:none;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.backhome{position:fixed;z-index:21;left:max(18px,env(safe-area-inset-left,0px));top:calc(max(16px,env(safe-area-inset-top,0px)) + 36px);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--cream);padding:8px 14px;border-radius:30px}
+.backhome:focus-visible,.b:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.route{position:fixed;z-index:21;right:max(16px,env(safe-area-inset-right,0px));top:max(16px,env(safe-area-inset-top,0px));display:flex;gap:6px;align-items:center;padding:7px 10px;background:rgba(10,24,15,.35);border:1px solid rgba(244,238,220,.4);backdrop-filter:blur(6px);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.route span{opacity:.45;transition:opacity .3s}.route span.on{opacity:1;color:var(--brass)}
+.route i{width:14px;height:1px;background:rgba(244,238,220,.4)}
+
+#film{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0E1A13}
+.scene{position:absolute;inset:0;opacity:0;will-change:transform,opacity}
+.scene img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(.98)}
+.shade,.grain,.t,.pols,.hint{z-index:10}
+.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,16,10,.62),rgba(6,16,10,.2) 45%,transparent 62%)}
+.grain{position:absolute;inset:-60%;pointer-events:none;opacity:.12;mix-blend-mode:overlay;animation:grain .7s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-5%)}75%{transform:translate(-2%,6%)}100%{transform:translate(5%,2%)}}
+
+.t{position:absolute;left:max(5vw,20px);top:16vh;max-width:min(560px,48vw);opacity:0;visibility:hidden;will-change:transform,opacity;text-shadow:0 2px 22px rgba(6,18,10,.55)}
+.t .k{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#E2C27A}
+.t h2{margin:10px 0 0;font-weight:800;text-transform:uppercase;font-size:clamp(40px,6vw,100px);line-height:.88}
+.t p{margin:14px 0 0;font-family:var(--serif);font-size:clamp(15px,1.5vw,20px);line-height:1.5}
+.t .list{margin-top:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;line-height:2}
+.hint{position:absolute;left:0;right:0;bottom:8vh;text-align:center;font-size:12px;letter-spacing:.34em;text-transform:uppercase}
+
+.pols{position:absolute;right:max(4vw,16px);bottom:9vh;display:flex;gap:clamp(8px,1.2vw,16px);align-items:flex-end;pointer-events:none}
+.pol{background:#FBF8EF;padding:7px 7px 28px;width:clamp(96px,13vw,190px);box-shadow:0 18px 36px -14px rgba(0,0,0,.7);position:relative;opacity:0;will-change:transform,opacity}
+.pol img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.pol span{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-family:var(--hand);font-size:clamp(14px,1.5vw,20px);color:var(--ink)}
+
+.epi{position:relative;z-index:2;background:var(--paper);color:var(--ink);padding-block:clamp(56px,9vw,100px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.epi .in{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.epi .k{font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:#2E6B45}
+.epi h2{margin:0;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,4.6vw,60px);line-height:1.12}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.wall figure{margin:0;background:#fff;padding:6px 6px 26px;box-shadow:0 14px 28px -16px rgba(0,0,0,.5);position:relative}
+.wall figure:nth-child(odd){transform:rotate(-1.5deg)}.wall figure:nth-child(even){transform:rotate(1.2deg)}
+.wall img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.wall figcaption{position:absolute;left:0;right:0;bottom:3px;text-align:center;font-family:var(--hand);font-size:18px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.b{display:inline-block;text-decoration:none;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:12px 18px;border-radius:30px;background:var(--sign);color:#fff}
+.b.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+@media (max-aspect-ratio:1/1){
+  .t{max-width:none;right:max(5vw,20px);top:13vh}
+  .shade{background:linear-gradient(rgba(6,16,10,.65),rgba(6,16,10,.2) 50%,rgba(6,16,10,.45))}
+  .pols{left:max(4vw,14px);right:max(4vw,14px);justify-content:center}
+  .pol{width:28vw}
+  .route{display:none}
+}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}}
+</style>
+</head>
+<body>
+<a id="wordmark" href="../#hub">Janani Porkodi</a>
+<a class="backhome" href="../#hub">← Back to the road</a>
+<div class="route" aria-hidden="true"><span>Chennai</span><i></i><span>Singapore</span><i></i><span>Dubai</span><i></i><span>Sri Lanka</span><i></i><span>Europe</span></div>
+
+<main id="film">
+  <div class="stage" id="stage">
+    <div class="scene" data-r="0"><img src="img/w1.jpg" alt="Janani's black Magnite at an airport drop-off at dawn, a plane climbing overhead"></div>
+    <div class="scene" data-r="0"><img src="img/w2.jpg" alt="Plane window over a sea of clouds at sunrise, the wing below"></div>
+    <div class="scene" data-r="1"><img src="img/w3.jpg" alt="Plane window view over Singapore's Marina Bay and garden domes"></div>
+    <div class="scene" data-r="2"><img src="img/w4.jpg" alt="Plane window view over Dubai's skyline and the desert at golden hour"></div>
+    <div class="scene" data-r="3"><img src="img/w5.jpg" alt="Plane window view over Sri Lanka's tea hills and palm coast"></div>
+    <div class="scene" data-r="4"><img src="img/w6.jpg" alt="Plane window view over the snowy Swiss Alps and a winding road"></div>
+    <div class="shade"></div>
+    <div class="grain" id="grain"></div>
+
+    <div class="t" data-s="0"><div class="k">Departures · Chennai</div><h2>Some roads<br>need wings.</h2><p>The car brings me this far. The window seat does the rest.</p></div>
+    <div class="hint" id="hint">Scroll to take off</div>
+    <div class="t" data-s="1"><div class="k">Always the window seat</div><h2>14 countries<br>and counting.</h2></div>
+    <div class="t" data-s="2"><div class="k">Asia</div><h2>Singapore ·<br>Malaysia</h2><p>December, and a Christmas tree in every mall.</p></div>
+    <div class="t" data-s="3"><div class="k">Middle East</div><h2>Dubai</h2><p>Gold light over the desert.</p></div>
+    <div class="t" data-s="4"><div class="k">The island</div><h2>Sri Lanka</h2><p>A girls' trip, 2022. Tea, the coast and too many drinks.</p></div>
+    <div class="t" data-s="5"><div class="k">Europe</div><h2>Here,<br>I took the wheel.</h2><p>Switzerland · Austria · Germany · Czech Republic · Hungary · Italy · France · Slovakia · Poland</p></div>
+
+    <div class="pols" data-s="2"><div class="pol"><img src="img/p-sg-033.jpg" alt="Janani by the Marina Bay waterfront"><span>Marina Bay</span></div><div class="pol"><img src="img/p-sg-045.jpg" alt="Janani in a saree by a giant Christmas tree"><span>saree, again</span></div><div class="pol"><img src="img/p-sg-042.jpg" alt="Janani looking at the Singapore skyline"><span>that view</span></div></div>
+    <div class="pols" data-s="4"><div class="pol"><img src="img/p-srilanka.jpg" alt="Friends raising glasses on the Sri Lanka girls' trip"><span>cheers!</span></div></div>
+    <div class="pols" data-s="5"><div class="pol"><img src="img/p-drive.jpg" alt="Janani at the wheel on a European road"><span>at the wheel</span></div><div class="pol"><img src="img/p-alps.jpg" alt="Janani and a friend dancing on a snowy Alpine viewpoint"><span>into 2026</span></div><div class="pol"><img src="img/p-snow.jpg" alt="Janani in a winter coat in the snow"><span>snowscape</span></div></div>
+  </div>
+</main>
+
+<section class="epi" aria-labelledby="epi-h">
+  <div class="in">
+    <div class="k">Then, city by city</div>
+    <h2 id="epi-h">"Just travel. The money will come back. Time won't."</h2>
+    <div class="wall">
+      <figure><img src="img/p-vienna.jpg" alt="Janani on a train, Vienna looks good on me"><figcaption>Vienna</figcaption></figure>
+      <figure><img src="img/p-prague.jpg" alt="Janani overlooking Prague rooftops"><figcaption>Prague</figcaption></figure>
+      <figure><img src="img/p-venice.jpg" alt="Janani by a monument in Venice"><figcaption>Venice</figcaption></figure>
+      <figure><img src="img/p-austria.jpg" alt="Austria collage with Janani and a friend"><figcaption>Austria</figcaption></figure>
+      <figure><img src="img/p-budapest.jpg" alt="Budapest's Chain Bridge at night"><figcaption>Budapest</figcaption></figure>
+      <figure><img src="../sarees/img/berlin.jpg" alt="Janani in a red saree in Berlin"><figcaption>Berlin</figcaption></figure>
+    </div>
+    <div class="btns">
+      <a class="b" href="../#hub">← Back to the road</a>
+      <a class="b alt" href="https://www.youtube.com/@jananiporkodi" target="_blank" rel="noopener">Travel Tales</a>
+      <a class="b alt" href="https://www.instagram.com/travelwithporkodi/" target="_blank" rel="noopener">@travelwithporkodi</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var film=document.getElementById("film"),stage=document.getElementById("stage");
+  var scenes=[].slice.call(document.querySelectorAll(".scene")),N=scenes.length;
+  var texts=[].slice.call(document.querySelectorAll(".t")),pols=[].slice.call(document.querySelectorAll(".pols"));
+  var route=[].slice.call(document.querySelectorAll(".route span")),hint=document.getElementById("hint");
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,H=0;
+  film.style.height=(N*170+100)+"vh";
+  var clamp=function(v,a,b){return v<a?a:v>b?b:v},ease=function(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2};
+  var target=0,cur=0;
+  function readScroll(){H=stage.clientHeight||innerHeight;var span=film.offsetHeight-H;target=clamp((scrollY-film.offsetTop)/span,0,1)*N;}
+  function render(g){
+    scenes.forEach(function(sc,i){var t=g-i,op=i===0?1:clamp((t+.18)/.18,0,1);if(t>1.02)op=0;
+      var s=reduce?1:1+.12*clamp(t,0,1.05)+(t<0?-t*.25:0);sc.style.opacity=op;sc.style.transform="scale("+s.toFixed(4)+")";sc.style.zIndex=i+1;sc.style.visibility=op>0?"visible":"hidden";});
+    texts.forEach(function(el){var t=g-(+el.dataset.s),i=ease(clamp((t-.05)/.15,0,1)),o=ease(clamp((t-.82)/.15,0,1)),v=i*(1-o);
+      if(+el.dataset.s===N-1)v=i;el.style.opacity=v.toFixed(3);el.style.visibility=v>.001?"visible":"hidden";el.style.transform="translateY("+((1-i)*36-o*36).toFixed(1)+"px)";});
+    pols.forEach(function(box){var s=+box.dataset.s;[].forEach.call(box.children,function(p,k){var t=g-s,i=ease(clamp((t-.25-k*.08)/.12,0,1)),o=ease(clamp((t-.86)/.12,0,1)),v=i*(1-(s===N-1?0:o));
+      p.style.opacity=v.toFixed(3);p.style.transform="translateY("+((1-i)*40).toFixed(1)+"px) rotate("+((k%2?3:-3)+(1-i)*6).toFixed(1)+"deg)";});});
+    hint.style.opacity=(1-clamp(g/.12,0,1)).toFixed(3);
+    var r=+scenes[clamp(Math.floor(g+.2),0,N-1)].dataset.r;route.forEach(function(sp,j){sp.classList.toggle("on",j===r);});
+  }
+  (function(){var c=document.createElement("canvas");c.width=c.height=180;var x=c.getContext("2d"),d=x.createImageData(180,180);
+    for(var i=0;i<d.data.length;i+=4){var q=Math.random()*255|0;d.data[i]=d.data[i+1]=d.data[i+2]=q;d.data[i+3]=255;}
+    x.putImageData(d,0,0);document.getElementById("grain").style.backgroundImage="url("+c.toDataURL()+")";})();
+  function loop(){readScroll();cur+=(target-cur)*(reduce?1:.1);if(Math.abs(target-cur)<.0004)cur=target;render(cur);requestAnimationFrame(loop);}
+  if("scrollRestoration" in history)history.scrollRestoration="manual";
+  window.scrollTo(0,0);readScroll();cur=target;loop();
+  window.__go=function(g){H=stage.clientHeight||innerHeight;var span=film.offsetHeight-H;scrollTo(0,film.offsetTop+span*g/N);readScroll();cur=target;render(cur);return g;};
+})();
+</script>
+</body></html>
