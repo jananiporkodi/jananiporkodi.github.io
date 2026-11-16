@@ -233,6 +233,8 @@ a{color:inherit}
   </div>
 </section>
 
+<script>window.__FRAMES={dir:"frames/",count:236,fps:6,video:"vid",onProgress:function(p){var b=document.getElementById("lbar");if(b)b.style.width=Math.round(p*100)+"%";}};</script>
+<script src="../frames.js"></script>
 <script>
 (function(){
   "use strict";
@@ -251,7 +253,7 @@ a{color:inherit}
 
   function setPct(p){document.getElementById("lbar").style.width=p+"%";document.getElementById("lpct").textContent="CALLING THE LIFT · "+p+"%";}
   function done(){document.getElementById("loader").classList.add("done");}
-  fetch(SRC).then(function(r){var total=+r.headers.get("content-length")||0;if(!r.body||!total)return r.blob();
+  if(window.__useFrames){setTimeout(done,1500);}else fetch(SRC).then(function(r){var total=+r.headers.get("content-length")||0;if(!r.body||!total)return r.blob();
     var reader=r.body.getReader(),got=0,chunks=[];function pump(){return reader.read().then(function(x){if(x.done)return new Blob(chunks,{type:"video/mp4"});chunks.push(x.value);got+=x.value.length;setPct(Math.round(got/total*100));return pump();});}return pump();
   }).then(function(b){vid.src=URL.createObjectURL(b);}).catch(function(){vid.src=SRC;});
   vid.addEventListener("loadedmetadata",function(){D=vid.duration||D;setPct(100);setTimeout(done,250);});
@@ -264,7 +266,7 @@ a{color:inherit}
 
   function render(p){
     var v=clamp((p-HOLD_IN)/(1-HOLD_IN-HOLD_OUT),0,1),T=v*D;
-    if(vid.readyState>=1&&Math.abs(T-lastT)>1/60){try{vid.currentTime=Math.min(T,D-.05);}catch(e){}lastT=T;}
+    window.__T=T;if(vid.readyState>=1&&Math.abs(T-lastT)>1/60){try{vid.currentTime=Math.min(T,D-.05);}catch(e){}lastT=T;}
     texts.forEach(function(el){
       var a=+el.dataset.a,b=+el.dataset.b,s=vis(T,a,b);
       if(p<HOLD_IN&&a<0)s.v=1-clamp(p/(HOLD_IN*.8),0,1);

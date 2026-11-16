@@ -185,6 +185,8 @@ a{color:inherit}
   </div>
 </section>
 
+<script>window.__FRAMES={dir:"frames/",count:275,fps:6,video:"vid",onProgress:function(p){var b=document.getElementById("lbar");if(b)b.style.width=Math.round(p*100)+"%";}};</script>
+<script src="frames.js"></script>
 <script>
 (function(){
   "use strict";
@@ -202,7 +204,7 @@ a{color:inherit}
   /* load the whole film into memory so scrubbing is instant */
   function setPct(p){document.getElementById("lbar").style.width=p+"%";document.getElementById("lpct").textContent="STARTING THE ENGINE · "+p+"%";}
   function done(){ready=true;document.getElementById("loader").classList.add("done");}
-  fetch(SRC).then(function(r){
+  if(window.__useFrames){setTimeout(done,1500);}else fetch(SRC).then(function(r){
     var total=+r.headers.get("content-length")||0;
     if(!r.body||!total)return r.blob();
     var reader=r.body.getReader(),got=0,chunks=[];
@@ -226,7 +228,7 @@ a{color:inherit}
     var v=clamp((p-HOLD_IN)/(1-HOLD_IN-HOLD_OUT),0,1), T=v*D;
     var bump=function(a,b,c,d){return clamp((T-a)/(b-a),0,1)*(1-clamp((T-c)/(d-c),0,1));};
     if(W/H<1){var px=50+16*bump(22.6,24,27.4,28.4)+14*bump(36,37.4,40.6,41.6);vid.style.objectPosition=px.toFixed(1)+"% 62%";}
-    if(vid.readyState>=1&&Math.abs(T-lastT)>1/60){try{vid.currentTime=Math.min(T,D-.05);}catch(e){}lastT=T;}
+    window.__T=T;if(vid.readyState>=1&&Math.abs(T-lastT)>1/60){try{vid.currentTime=Math.min(T,D-.05);}catch(e){}lastT=T;}
     texts.forEach(function(el){
       var a=+el.dataset.a,b=+el.dataset.b,inn=clamp((T-(a-.7))/.7,0,1),out=clamp((T-b)/.7,0,1),o=ease(inn)*(1-ease(out));
       if(p<HOLD_IN&&a<0)o=1-clamp((p)/(HOLD_IN*.8),0,1);
